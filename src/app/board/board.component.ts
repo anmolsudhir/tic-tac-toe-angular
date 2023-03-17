@@ -9,6 +9,7 @@ export class BoardComponent {
   squares: any[];
   xIsNext: boolean;
   winner: any;
+  gameOver: boolean;
 
   constructor(){};
 
@@ -20,8 +21,7 @@ export class BoardComponent {
     this.squares = Array(9).fill(null);
     this.xIsNext = true;
     this.winner = null;
-
-
+    this.gameOver = false;
   }
 
   get player(){
@@ -35,6 +35,8 @@ export class BoardComponent {
     }
 
     this.winner = this.calculateWinner();
+    if(this.winner)
+      this.gameOver = true;
   }
   
   calculateWinner(){
